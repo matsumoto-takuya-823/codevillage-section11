@@ -11,6 +11,7 @@ export default class TodoList extends React.Component{
                     title={todo.title}
                     desc={todo.desc}
                     isDone props={todo.isDone}
+                    handleClick={this.props.handleClick}
                 />
             )
         })

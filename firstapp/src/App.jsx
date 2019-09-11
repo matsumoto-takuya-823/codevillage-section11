@@ -57,10 +57,18 @@ class App extends React.Component {
         //stateのtodosに、入力されたデータを追加する
     }
 
-    handleClick(e){
-        e.preventDefault()
-
-        console.log('click')
+    handleClick(key){
+        //ボタン押したら、falseはtrueにtrueはfalseに
+        const newBtnText = this.state.todos.slice()
+		if (newBtnText[key].isDone === false) {
+			newBtnText[key].isDone = true
+		} else {
+			newBtnText[key].isDone = false
+        }
+        
+        this.setState({
+			todos: newBtnText
+		})
     }
 
 
@@ -71,7 +79,7 @@ class App extends React.Component {
             /* thisは実行元を参照するのでその前の段階のthisを参照するようにbindする */
             <React.Fragment> 
                 <Form handleSubmit={this.handleSubmit.bind(this)}></Form>
-                <TodoList todos={this.state.todos}></TodoList>
+                <TodoList todos={this.state.todos} handleClick={this.handleClick.bind(this)}></TodoList>
             </React.Fragment>
         )
     }
