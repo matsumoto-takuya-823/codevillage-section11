@@ -58,7 +58,7 @@ class App extends React.Component {
     }
 
     handleClick(key){
-        //ボタン押したら、falseはtrueにtrueはfalseに
+        //ボタン押したら、falseはtrueにtrueはfalseにする
         const newBtnText = this.state.todos.slice()
 		if (newBtnText[key].isDone === false) {
 			newBtnText[key].isDone = true
@@ -68,7 +68,8 @@ class App extends React.Component {
         
         this.setState({
 			todos: newBtnText
-		})
+        })
+        
     }
 
 

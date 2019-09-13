@@ -7,7 +7,7 @@ export default class TodoItem extends React.Component {
             <li>
                 <p>タイトル: {this.props.title}</p>
                 <p>詳細: {this.props.desc}</p>
-                <button onClick={this.props.handleClick}>{buttonText}</button>
+                <button onClick={(e)=>{this.props.handleClick(this.props.id)}}>{buttonText}</button>
             </li>
         )
     }

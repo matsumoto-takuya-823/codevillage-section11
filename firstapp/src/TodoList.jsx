@@ -8,9 +8,10 @@ export default class TodoList extends React.Component{
             return (
                 <TodoItem
                     key={i}
+                    id={i}
                     title={todo.title}
                     desc={todo.desc}
-                    isDone props={todo.isDone}
+                    isDone={todo.isDone}
                     handleClick={this.props.handleClick}
                 />
             )
