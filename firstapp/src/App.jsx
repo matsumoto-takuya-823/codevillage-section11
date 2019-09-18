@@ -28,7 +28,7 @@ class App extends React.Component {
         
 	}
 	handleSubmit(e){
-		e.preventDefault()
+		e.preventDefault() 
 
 		//まず、フォームに入力されたデータを取得する
 
@@ -59,6 +59,10 @@ class App extends React.Component {
 			//新しいstateの変更の内容を記述
 			todos: newTodos
 		})
+		// this.Form.setState({
+		// 	title = "",
+		// 	desc = ""
+		// })
 		//stateのtodosに、入力されたデータを追加する
 	}
 
