@@ -1,11 +1,17 @@
 import React from "react"
 import TodoItem from "./TodoItem"
+import styled from "styled-components"
+
+const TodoListStyle = styled.div`
+width: 80%;
+`
 
 export default class TodoList extends React.Component{
     render(){
         const todos = this.props.todos.map((todo,i)=>{
             //一意なキーを用意する
             return (
+                
                 <TodoItem
                     key={i}
                     id={i}
@@ -14,12 +20,15 @@ export default class TodoList extends React.Component{
                     isDone={todo.isDone}
                     handleClick={this.props.handleClick}
                 />
+                
             )
         })
         return(
+            <TodoListStyle>
             <ul>
                 {todos}
             </ul>
+            </TodoListStyle>
         )
     }
 }
