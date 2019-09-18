@@ -8,6 +8,11 @@ background-color: #fff;
 margin: 0;
 padding: 0 15%;
 `
+const MainTitle = styled.h1`
+text-align: center;
+
+`
+
 class App extends React.Component {
 	constructor() {
 		super() //親のコンポーネントを使用する時に書く
@@ -37,34 +42,35 @@ class App extends React.Component {
 		const title = e.target.title.value  //e.targetでイベント(submitイベント)の発生源を示す
 		const desc = e.target.desc.value
 
+		
 		//直接書き換えられない！
 		// this.state.todos.push({
-		//     id: 3,
-		//     title: title,
-		//     desc: desc,
-		//     isDone: false
-		// })
+			//     id: 3,
+			//     title: title,
+			//     desc: desc,
+			//     isDone: false
+			// })
+			
+			//todosをコピーする
+			// thisは実行元を参照する
+			const newTodos = this.state.todos.slice() //()内は何も書かないと全部指定したことになる
+			newTodos.push({
+				title: title,
+				desc: desc,
+				isDone: false
+			})
 
-		//todosをコピーする
-		// thisは実行元を参照する
-		const newTodos = this.state.todos.slice() //()内は何も書かないと全部指定したことになる
-		newTodos.push({
-			title: title,
-			desc: desc,
-			isDone: false
-		})
 
 		//再レンダリングを行うために、必ずsetStateを使用する。
 		this.setState({
 			//新しいstateの変更の内容を記述
 			todos: newTodos
 		})
-		// this.Form.setState({
-		// 	title = "",
-		// 	desc = ""
-		// })
 		//stateのtodosに、入力されたデータを追加する
+		e.target.title.value = ""
+		e.target.desc.value = ""
 	}
+	
 
 	handleClick(key){
 		// const desc =  this.state.todos.desc
@@ -73,10 +79,8 @@ class App extends React.Component {
 		const newBtnText = this.state.todos.slice()
 		if (newBtnText[key].isDone === false) {
 			newBtnText[key].isDone = true
-			// newBtnText[key].desc = "完了"
 		} else {
 			newBtnText[key].isDone = false
-			// newBtnText[key].desc = newBtnText.desc
 		}
         
 		this.setState({
@@ -92,7 +96,7 @@ class App extends React.Component {
 		// <React.Fragment> divの代わりになる
 		/* thisは実行元を参照するのでその前の段階のthisを参照するようにbindする */
 			<Container> 
-				<h1>ToDo</h1>
+				<MainTitle>ToDo List</MainTitle>
 				<Form handleSubmit={this.handleSubmit.bind(this)}></Form>
 				<TodoList todos={this.state.todos} handleClick={this.handleClick.bind(this)}></TodoList> 
 			</Container>
