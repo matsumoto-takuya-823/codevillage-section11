@@ -26,10 +26,10 @@ li {
         margin-right: 15%;
     }
     button {
-        background-color: black;
+        background-color: ${(props)=>(props.isDone?'white':'black')};
+        color: ${(props)=>(props.isDone?'black':'white')};
         height: 30px;
         border-radius: 20px;
-        color: #fff;
         box-shadow: 2px 2px rgba(0, 0, 0, 0.6);
         margin-left: 20px;
     }
@@ -42,6 +42,8 @@ li {
         position: absolute;
         bottom: 10px;
         right: 20px;
+        background-color: black;
+        color: white;
     }
 }
 
@@ -51,7 +53,7 @@ export default class TodoItem extends React.Component {
     render(){
         const buttonText = this.props.isDone?"戻す":"完了"
         return (
-            <ItemStyle>
+            <ItemStyle isDone={this.props.isDone}>
                 <li>
                     <p><span>TITLE</span><br></br>{this.props.title}</p>
                     <p><span>CONTENT</span><br></br>{this.props.desc}</p>
