@@ -75,8 +75,6 @@ class App extends React.Component {
 	
 
 	handleClick(key){
-		// const desc =  this.state.todos.desc
-        
 		//ボタン押したら、falseはtrueにtrueはfalseにする
 		const newBtnText = this.state.todos.slice()
 		if (newBtnText[key].isDone === false) {
@@ -88,6 +86,16 @@ class App extends React.Component {
 		this.setState({
 			todos: newBtnText
 		})   
+	}
+
+	handleDelete(i){
+		//削除ボタン押したらtodosが消えるようにする
+		// 削除
+		this.state.todos.splice(i, 1);
+		// 保存
+		this.setState({
+		  todo : this.state.todos
+		});
 	}
 
 	
@@ -103,7 +111,8 @@ class App extends React.Component {
 				<Form handleSubmit={this.handleSubmit.bind(this)}></Form>
 				<TodoList 
 				todos={this.state.todos} 
-				handleClick={this.handleClick.bind(this)}></TodoList> 
+				handleClick={this.handleClick.bind(this)}
+				handleDelete={this.handleDelete.bind(this)}></TodoList> 
 			</Container>
 		)
 	}
