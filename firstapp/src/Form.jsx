@@ -4,10 +4,11 @@ import styled from 'styled-components'
 const FormStyle = styled.div`
 position: fixed;
 right: 15%;
-bottom: 15%;
-border: 1px solid;
+top: 10%;
+border: 1px solid #fff;
 border-radius: 20px;
 padding: 10px;
+background-color: rgba(0, 0, 0, 0.5);
 input {
     display: flex;
     flex-direction: column;
@@ -21,7 +22,7 @@ button {
     width: 50px;
     height: 50px;
     font-size: 25px;
-    background-color: pink;
+    background-color: black;
     border-radius: 50%;
     color: #fff;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.6);

@@ -2,15 +2,22 @@ import React from "react"
 import Form from "./Form"
 import TodoList from "./TodoList"
 import styled from 'styled-components'
+import bgi from './image/wood.jpg'
 
 const Container = styled.div`
 background-color: #fff;
 margin: 0;
 padding: 0 15%;
+background-image: url(${bgi});
+padding-bottom: 20px;
 `
 const MainTitle = styled.h1`
 text-align: center;
-
+color: #fff;
+text-shadow: 2px 2px 0 black,
+               -2px 2px 0 black,
+               2px -2px 0 black,
+               -2px -2px 0 black;
 `
 
 class App extends React.Component {
@@ -18,11 +25,6 @@ class App extends React.Component {
 		super() //親のコンポーネントを使用する時に書く
 		this.state = {
 			todos: [
-				{
-					title: "課題をやる！",
-					desc: "test",
-					isDone: false
-				},
 				{
 					title: "課題をやる！",
 					desc: "test",
@@ -85,9 +87,10 @@ class App extends React.Component {
         
 		this.setState({
 			todos: newBtnText
-		})
-        
+		})   
 	}
+
+	
 
 
 
@@ -98,7 +101,9 @@ class App extends React.Component {
 			<Container> 
 				<MainTitle>ToDo List</MainTitle>
 				<Form handleSubmit={this.handleSubmit.bind(this)}></Form>
-				<TodoList todos={this.state.todos} handleClick={this.handleClick.bind(this)}></TodoList> 
+				<TodoList 
+				todos={this.state.todos} 
+				handleClick={this.handleClick.bind(this)}></TodoList> 
 			</Container>
 		)
 	}
@@ -106,39 +111,3 @@ class App extends React.Component {
 export default App
 
 
-// dom.addEventListenter('click',function(e) {
-
-// })
-
-
-//<form>
-//<input name='sample'>
-//</form>
-
-//form.sample これで取得可能
-
-
-
-// thisの仕組み
-// function hello() {
-//     return this.name
-// }
-
-// window.hello()
-
-// const Beppu = {
-//     name: 'べっぷ',
-//     hello: hello
-// }
-
-// Beppu.hello()
-
-// const Tanoue = {
-//     name: 'たのうえ',
-// }
-// Beppu.hello.call(Tanoue) //callを使うと()内のオブジェクトを実行する。では、applyは？
-// // =>'たのうえ'
-// Beppu.hello.bind(this) //bindは、関数を返す  ここのthisはundefind
-// // => function hello() {
-// //         return Tanoue.name
-// // }

@@ -7,6 +7,8 @@ border: 1px solid;
 border-radius: 20px;
 margin-bottom: 10px;
 padding: 20px;
+background-color: rgba(0, 0, 0, 0.5);
+color: #fff;
 li {
     display: flex;
     position: relative;
@@ -14,13 +16,17 @@ li {
         span {
             font-size: 25px;
             font-weight: bold;
+            text-shadow: 2px 2px 0 black,
+               -2px 2px 0 black,
+               2px -2px 0 black,
+               -2px -2px 0 black;
         }
     }
     p:first-child {
         margin-right: 15%;
     }
     button {
-        background-color: blue;
+        background-color: black;
         height: 30px;
         border-radius: 20px;
         color: #fff;
