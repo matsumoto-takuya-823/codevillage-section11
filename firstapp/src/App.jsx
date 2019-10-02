@@ -38,36 +38,25 @@ class App extends React.Component {
 		e.preventDefault() 
 
 		//まず、フォームに入力されたデータを取得する
-
-		// const title = this.title.value
 		//(注意:this.ではイベントの発生源を参照できない！)
+		
 		const title = e.target.title.value  //e.targetでイベント(submitイベント)の発生源を示す
 		const desc = e.target.desc.value
-
-		
-		//直接書き換えられない！
-		// this.state.todos.push({
-			//     id: 3,
-			//     title: title,
-			//     desc: desc,
-			//     isDone: false
-			// })
-			
-			//todosをコピーする
-			// thisは実行元を参照する
-			const newTodos = this.state.todos.slice() //()内は何も書かないと全部指定したことになる
+		const newTodos = this.state.todos.slice() //()内は何も書かないと全部指定したことになる
+		if(title.length === 0){
+			window.alert('TITLEの内容を入力してください')
+		} else {
 			newTodos.push({
 				title: title,
 				desc: desc,
 				isDone: false
 			})
-
-
-		//再レンダリングを行うために、必ずsetStateを使用する。
-		this.setState({
-			//新しいstateの変更の内容を記述
-			todos: newTodos
-		})
+			//再レンダリングを行うために、必ずsetStateを使用する。
+			this.setState({
+				//新しいstateの変更の内容を記述
+				todos: newTodos
+			})
+		}
 		//stateのtodosに、入力されたデータを追加する
 		e.target.title.value = ""
 		e.target.desc.value = ""
@@ -90,9 +79,7 @@ class App extends React.Component {
 
 	handleDelete(i){
 		//削除ボタン押したらtodosが消えるようにする
-		// 削除
 		this.state.todos.splice(i, 1);
-		// 保存
 		this.setState({
 		  todo : this.state.todos
 		});
